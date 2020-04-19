@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
 
     private Rigidbody2D body;
     private Collider2D col;
-    private float force = 2.5f;
+    private float force = 2f;
     private GameTime gameTime;
 
     void Start()
@@ -33,7 +33,6 @@ public class Movement : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Finish"))
         {
-            Debug.Log("Finish");
             Time.timeScale = 0;
             gameTime.SetHighScore();
             gameOver.SetActive(true);
