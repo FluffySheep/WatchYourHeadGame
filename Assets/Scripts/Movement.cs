@@ -8,11 +8,15 @@ public class Movement : MonoBehaviour
     public GameObject gameOver;
 
     private Rigidbody2D body;
-    private float force = 5f;
+    private Collider2D col;
+    private float force = 2.5f;
+    private GameTime gameTime;
 
     void Start()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
+        gameTime = GameObject.FindGameObjectWithTag("timer").GetComponent<GameTime>();
+        col = gameObject.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -31,6 +35,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Finish");
             Time.timeScale = 0;
+            gameTime.SetHighScore();
             gameOver.SetActive(true);
         }
     }
