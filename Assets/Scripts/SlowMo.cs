@@ -7,6 +7,12 @@ public class SlowMo : MonoBehaviour
     private static float resetTime = 0.5f;
     private float curTime = resetTime;
     private bool slowMo = false;
+    private float fixedDeltaTimeReset;
+
+    void Start()
+    {
+        fixedDeltaTimeReset = Time.fixedDeltaTime;
+    }
 
     void Update()
     {
@@ -34,6 +40,7 @@ public class SlowMo : MonoBehaviour
         curTime = resetTime;
         slowMo = true;
         Time.timeScale = 0.35f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     void DisableSlowMo()
@@ -42,5 +49,6 @@ public class SlowMo : MonoBehaviour
         slowMo = false;
         curTime = resetTime;
         Time.timeScale = 1f;
+        Time.fixedDeltaTime = fixedDeltaTimeReset;
     }
 }
